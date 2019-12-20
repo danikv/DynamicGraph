@@ -13,6 +13,8 @@ public:
     }
 
     ~Linked_List() {
+        if(head == NULL)
+            return;
         while(this->head->next != NULL) {
             Node* temp = this->head;
             this->head = this->head->next;

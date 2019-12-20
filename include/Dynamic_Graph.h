@@ -18,7 +18,6 @@ public:
     Rooted_Tree* BFS(Graph_Node* source) const;
 
 private:
-
     Linked_List<Graph_Node> nodes;
     Linked_List<Graph_Edge> edges;
 };
