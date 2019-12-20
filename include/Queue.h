@@ -1,3 +1,6 @@
+#ifndef QUEUE_H
+#define QUEUE_H
+
 
 struct QNode { 
     void* key; 
@@ -20,3 +23,5 @@ private:
     QNode* newNode(void* k) const;
     QNode *front, *rear; 
 };
+
+#endif

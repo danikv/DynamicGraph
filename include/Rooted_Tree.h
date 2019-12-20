@@ -1,3 +1,6 @@
+#ifndef ROOTED_TREE_H
+#define ROOTED_TREE_H
+
 #include <ostream>
 
 
@@ -19,3 +22,5 @@ public:
 private:
     Tree_Node* root;
 };
+
+#endif

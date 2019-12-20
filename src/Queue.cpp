@@ -1,4 +1,5 @@
 #include "Queue.h"
+#include <cstddef>
 
 Queue::Queue() 
 : rear(NULL)

@@ -94,6 +94,8 @@ bool deleted_node(unsigned key, My_Edge* my_edge_array[], unsigned edges_array_c
 int main()
 {
 
+
+
     srand(SEED);
 
     unsigned node_key = 1;

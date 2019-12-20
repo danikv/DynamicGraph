@@ -1,13 +1,20 @@
-
+#ifndef GRAPH_EDGE_H
+#define GRAPH_EDGE_H
 
 class Graph_Edge {
 
 public:
-    Graph_Edge(unsigned int from, unsigned int to);
-    unsigned get_from();
-    unsigned get_to();
+    Graph_Edge();
+    unsigned int Get_From();
+    unsigned int Get_To();
+    void Set_Edge(unsigned int _from, unsigned int _to);
+
+    Graph_Edge* next;
+    Graph_Edge* prev;
 
 private:
-    unsigned from;
-    unsigned to;
+    unsigned int from;
+    unsigned int to;
 };
+
+#endif

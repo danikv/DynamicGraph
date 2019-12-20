@@ -2,8 +2,8 @@
 #include "Graph_Node.h"
 
 
-Graph_Node::Graph_Node(unsigned int _key)
-: key(_key)
+Graph_Node::Graph_Node()
+: key(-1)
 {
 }
     
@@ -16,5 +16,18 @@ unsigned Graph_Node::Get_in_Degree() const {
 }
     
 unsigned Graph_Node::Get_key() const {
-    return key;
+    return this->key;
 }
+
+void Graph_Node::Set_Key(unsigned int _key) {
+    this->key = _key;
+}
+
+/*Linked_List<Graph_Edge> Graph_Node::Get_Edges_In() {
+    return this->in;
+}
+
+
+Linked_List<Graph_Edge> Graph_Node::Get_Edges_Out() {
+    return this->out;
+}*/

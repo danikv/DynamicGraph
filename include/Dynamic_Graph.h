@@ -1,3 +1,6 @@
+#ifndef DYNAMIC_GRAPH_H
+#define DYNAMIC_GRAPH_H
+
 #include "Rooted_Tree.h"
 #include "Graph_Node.h"
 #include "Graph_Edge.h"
@@ -14,4 +17,10 @@ public:
     Rooted_Tree* SCC() const;
     Rooted_Tree* BFS(Graph_Node* source) const;
 
+private:
+
+    Linked_List<Graph_Node> nodes;
+    Linked_List<Graph_Edge> edges;
 };
+
+#endif
