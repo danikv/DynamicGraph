@@ -2,7 +2,6 @@
 #define GRAPH_NODE_H
 
 #include "Linked_List.h"
-#include "Graph_Edge.h"
 
 class Graph_Node {
 
@@ -12,6 +11,8 @@ public:
     unsigned Get_in_Degree() const;
     unsigned Get_key() const;
     void Set_Key(unsigned int key);
+    void Set_In_Deg(unsigned int _in_deg);
+    void Set_Out_Deg(unsigned int _out_deg);
     //Linked_List<Graph_Edge>& Get_Edges_In();
     //Linked_List<Graph_Edge>& Get_Edges_Out();
 
@@ -20,6 +21,8 @@ public:
 
 private:
     unsigned int key;
+    unsigned int in_deg;
+    unsigned int out_deg;
     //Linked_List<Graph_Edge> in;
     //Linked_List<Graph_Edge> out;
 };

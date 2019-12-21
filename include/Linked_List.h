@@ -29,30 +29,25 @@ public:
 
     Node* Insert() {
         Node* new_node = new Node();
-        new_node->next = head;
+        new_node->next = this->head;
         new_node->prev = NULL;
         if(this->head != NULL) {
             this->head->prev = new_node;
         }
-        head = new_node;
+        this->head = new_node;
+        return new_node;
     }
 
     void Delete_Node(Node* node) {
-        if(node->prev != NULL && node->next != NULL) {
+        if(node->prev != NULL) {
             node->prev->next = node->next;
-            node->next->prev = node->prev;
-            delete node;
-        }
-        else if(node->prev != NULL) {
-            //end of the list
-            node->prev->next = NULL;
-            delete node;
         }
         else {
-            //begining of the list(no prev)
-            node->next->prev = NULL;
-            head = node->next;
-            delete node;
+            this->head = node->next;
+        }
+
+        if(node->next != NULL) {
+            node->next->prev = node->prev;
         }
     }
 

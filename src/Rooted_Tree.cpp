@@ -7,7 +7,7 @@ Rooted_Tree::Rooted_Tree()
 }
 
 void deleteNode(Tree_Node* node) {
-    if(node != NULL)
+    if(node == NULL)
         return;
     if(node->left != NULL) {
         deleteNode(node->left);

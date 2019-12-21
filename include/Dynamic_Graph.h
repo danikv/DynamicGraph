@@ -18,6 +18,9 @@ public:
     Rooted_Tree* BFS(Graph_Node* source) const;
 
 private:
+
+    unsigned int** Create_Adj_Matrix(unsigned int** nodes_map, unsigned int nodes_size, unsigned int edges_size);
+
     Linked_List<Graph_Node> nodes;
     Linked_List<Graph_Edge> edges;
 };
