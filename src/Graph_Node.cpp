@@ -10,11 +10,11 @@ Graph_Node::Graph_Node()
 }
     
 unsigned Graph_Node::Get_out_Degree() const {
-    return this->out_deg;
+    return this->out.size();
 }
     
 unsigned Graph_Node::Get_in_Degree() const {
-    return this->in_deg;
+    return this->in.size();
 }
     
 unsigned Graph_Node::Get_key() const {
@@ -25,19 +25,11 @@ void Graph_Node::Set_Key(unsigned int _key) {
     this->key = _key;
 }
 
-void Graph_Node::Set_In_Deg(unsigned int _in_deg) {
-    this->in_deg = _in_deg;
-}
-
-void Graph_Node::Set_Out_Deg(unsigned int _out_deg) {
-    this->out_deg = _out_deg;
-}
-
-/*Linked_List<Graph_Edge> Graph_Node::Get_Edges_In() {
+Linked_List<Graph_Edge_Struct> Graph_Node::Get_Edges_In() {
     return this->in;
 }
 
 
-Linked_List<Graph_Edge> Graph_Node::Get_Edges_Out() {
+Linked_List<Graph_Edge_Struct> Graph_Node::Get_Edges_Out() {
     return this->out;
-}*/
+}

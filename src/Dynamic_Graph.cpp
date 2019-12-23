@@ -20,7 +20,8 @@ void Dynamic_Graph::Delete_Node(Graph_Node* node) {
 }
 
 Graph_Edge* Dynamic_Graph::Insert_Edge(Graph_Node* from, Graph_Node* to) {
-    Graph_Edge* edge = edges.Insert();
+    Graph_Edge_Struct* edge_from = from->Get_Edges_Out().insert();
+    Graph_Edge_Struct* edge_in = from->Get_Edges_In().insert();
     edge->Set_Edge(from, to);
     return edge;
 }

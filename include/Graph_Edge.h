@@ -6,18 +6,14 @@
 class Graph_Edge {
 
 public:
-    Graph_Edge();
+    Graph_Edge(Graph_Edge_Struct* _in, Graph_Node* _node_in, Graph_Edge_Struct* _out, Graph_Node* _node_out);
     ~Graph_Edge();
-    Graph_Node* Get_From();
-    Graph_Node* Get_To();
-    void Set_Edge(Graph_Node* _from, Graph_Node* _to);
-
-    Graph_Edge* next;
-    Graph_Edge* prev;
 
 private:
-    Graph_Node* from;
-    Graph_Node* to;
+    Graph_Edge_Struct* in;
+    Graph_Node* node_in;
+    Graph_Edge_Struct* out;
+    Graph_Node* node_out;
 };
 
 #endif

@@ -1,25 +1,15 @@
 #include "Graph_Edge.h"
 
 
-Graph_Edge::Graph_Edge() {
+Graph_Edge::Graph_Edge(Graph_Edge_Struct* _in, Graph_Node* _node_in, Graph_Edge_Struct* _out, Graph_Node* _node_out)
+: in{_in}
+, node_in{_node_in}
+, out{_out}
+, node_out{_node_out}
+{
 }
 
 Graph_Edge::~Graph_Edge() {
-    this->from->Set_Out_Deg(this->from->Get_out_Degree() - 1);
-    this->to->Set_In_Deg(this->to->Get_in_Degree() - 1);
-}
-    
-Graph_Node* Graph_Edge::Get_From() {
-    return this->from;
-}
-    
-Graph_Node* Graph_Edge::Get_To() {
-    return this->to;
-}
-
-void Graph_Edge::Set_Edge(Graph_Node* _from, Graph_Node* _to) {
-    this->from = _from;
-    this->to = _to;
-    this->from->Set_Out_Deg(this->from->Get_out_Degree() + 1);
-    this->to->Set_In_Deg(this->to->Get_in_Degree() + 1);
+    this->node_in->Get_Edges_In().Delete_Node(this->in);
+    this->node_out->Get_Edges_Out().Delete_Node(this->out);
 }
