@@ -1,9 +1,9 @@
 #include "Rooted_Tree.h"
 
-Rooted_Tree::Rooted_Tree()
+Rooted_Tree::Rooted_Tree(Graph_Node* _node)
 {
     root = new Tree_Node();
-    root->key = 0;
+    root->node = _node;
     root->left_child = NULL;
     root->parent = NULL;
     root->right_sibling = NULL;
@@ -26,9 +26,10 @@ Rooted_Tree::~Rooted_Tree() {
 }
 
 void Rooted_Tree::Print_By_Layer(std::ostream& stream) const {
-    if(this->root->left_child == NULL)
+    if(this->root->node == NULL)
         return;
 
+    
     //recursive_print(stream, this->root->left_child);
 }
     
@@ -36,18 +37,18 @@ void Rooted_Tree::Preorder_Print(std::ostream& stream) const {
     
 }
 
-Tree_Node* Rooted_Tree::Insert_Left_Child(unsigned int key, Tree_Node* parent) const {
+Tree_Node* Rooted_Tree::Insert_Left_Child(Graph_Node* _node, Tree_Node* parent) const {
     Tree_Node* node = new Tree_Node();
-    node->key = key;
+    node->node = _node;
     node->parent = parent;
     node->left_child = NULL;
     node->right_sibling = NULL;
     return node;
 }
     
-Tree_Node* Rooted_Tree::Insert_Right_Sibling(unsigned int key, Tree_Node* parent, Tree_Node* left_sibling) const {
+Tree_Node* Rooted_Tree::Insert_Right_Sibling(Graph_Node* _node, Tree_Node* parent, Tree_Node* left_sibling) const {
     Tree_Node* node = new Tree_Node();
-    node->key = key;
+    node->node = _node;
     node->parent = parent;
     left_sibling->right_sibling = node;
     node->right_sibling = NULL;

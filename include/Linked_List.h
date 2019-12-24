@@ -61,6 +61,10 @@ public:
         return size;
     }
 
+    bool isEmpty() {
+        return this->head == NULL;
+    }
+
 private:
     Node * head;
 };

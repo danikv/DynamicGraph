@@ -19,7 +19,7 @@ public:
 
 private:
 
-    unsigned int** Create_Adj_Matrix(unsigned int** nodes_map, unsigned int nodes_size, unsigned int edges_size);
+    unsigned int** Create_Adj_Matrix(unsigned int** nodes_map);
 
     Linked_List<Graph_Node> nodes;
 };
