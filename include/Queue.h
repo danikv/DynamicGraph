@@ -15,7 +15,7 @@ public:
 
     Queue();
     void push(void* k);
-    QNode* pop();
+    void* pop();
     bool empty() const;
 
 private: 

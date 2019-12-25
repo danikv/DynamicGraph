@@ -2,6 +2,7 @@
 #define DYNAMIC_GRAPH_H
 
 #include "Rooted_Tree.h"
+#include "Linked_List.h"
 #include "Graph_Node.h"
 #include "Graph_Edge.h"
 
@@ -18,8 +19,6 @@ public:
     Rooted_Tree* BFS(Graph_Node* source) const;
 
 private:
-
-    unsigned int** Create_Adj_Matrix(unsigned int** nodes_map);
 
     Linked_List<Graph_Node> nodes;
 };

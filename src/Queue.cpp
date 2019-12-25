@@ -36,7 +36,7 @@ void Queue::push(void* k) {
 
 // Function to remove 
 // a key from given queue q 
-QNode* Queue::pop() {
+void* Queue::pop() {
     // If queue is empty, return NULL. 
     if (this->front == NULL)
         return NULL; 
@@ -50,9 +50,9 @@ QNode* Queue::pop() {
     // change rear also as NULL 
     if (this->front == NULL) 
         this->rear = NULL; 
-    return temp; 
+    return temp->key; 
 } 
 
 bool Queue::empty() const {
-    return this->front != NULL;
+    return this->front == NULL;
 }

@@ -4,6 +4,7 @@
 
 Graph_Node::Graph_Node()
 : key(-1)
+, color(0)
 {
 }
     
@@ -30,4 +31,12 @@ Linked_List<Graph_Edge_Struct>& Graph_Node::Get_Edges_In() {
 
 Linked_List<Graph_Edge_Struct>& Graph_Node::Get_Edges_Out() {
     return this->out;
+}
+
+int Graph_Node::Get_Color() const {
+    return this->color;
+}
+
+void Graph_Node::Set_Color(int _color) {
+    this->color = _color;
 }

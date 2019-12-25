@@ -2,11 +2,11 @@
 
 Rooted_Tree::Rooted_Tree(Graph_Node* _node)
 {
-    root = new Tree_Node();
-    root->node = _node;
-    root->left_child = NULL;
-    root->parent = NULL;
-    root->right_sibling = NULL;
+    this->root = new Tree_Node();
+    this->root->node = _node;
+    this->root->left_child = NULL;
+    this->root->parent = NULL;
+    this->root->right_sibling = NULL;
 }
 
 void deleteNode(Tree_Node* node) {
@@ -29,12 +29,58 @@ void Rooted_Tree::Print_By_Layer(std::ostream& stream) const {
     if(this->root->node == NULL)
         return;
 
+    Tree_Node* node = this->root;
+    stream << node->node->Get_key() << '\n';
+    /*while(node != NULL) {
+        if(node->left_child != NULL) {
+            Tree_Node* tmp = node->left_child;
+            while(tmp != NULL) {
+                stream << tmp->node->Get_key();
+                tmp = tmp->right_sibling;
+                if(tmp != NULL) {
+                    stream << ",";
+                }
+            }
+        }
+
+        Tree_Node * tmp = node->right_sibling;
+        if(tmp != NULL) {
+            node = node->right_sibling;
+        }
+        /*stream << node->node->Get_key();
+        if(node->right_sibling != NULL) {
+            stream << ',';
+            node = node->right_sibling;
+        }
+        else {
+            stream << '\n';
+            node = node->left_child;
+        }*/
+    //}
     
-    //recursive_print(stream, this->root->left_child);
+}
+
+void Print_Recursive(std::ostream& stream, Tree_Node* root) {
+    if(root->node == NULL) {
+        return;
+    }
+
+    while(root != NULL) {
+        stream << root->node->Get_key();
+        if(root->left_child != NULL) {
+            stream << ',';
+            Print_Recursive(stream, root->left_child);
+        }
+        root = root->right_sibling;
+        if(root != NULL) {
+            stream << ',';
+        }
+    }
 }
     
 void Rooted_Tree::Preorder_Print(std::ostream& stream) const {
-    
+    Print_Recursive(stream, this->root);
+    stream << '\n';
 }
 
 Tree_Node* Rooted_Tree::Insert_Left_Child(Graph_Node* _node, Tree_Node* parent) const {
@@ -43,6 +89,7 @@ Tree_Node* Rooted_Tree::Insert_Left_Child(Graph_Node* _node, Tree_Node* parent) 
     node->parent = parent;
     node->left_child = NULL;
     node->right_sibling = NULL;
+    parent->left_child = node;
     return node;
 }
     

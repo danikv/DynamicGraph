@@ -23,7 +23,7 @@ public:
         delete this->head;
     }
     
-    Node* Get_Head() {
+    Node* Get_Head() const {
         return head;
     }
 

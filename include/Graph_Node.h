@@ -14,12 +14,15 @@ public:
     void Set_Key(unsigned int key);
     Linked_List<Graph_Edge_Struct>& Get_Edges_In();
     Linked_List<Graph_Edge_Struct>& Get_Edges_Out();
+    int Get_Color() const;
+    void Set_Color(int _color);
 
     Graph_Node* next;
     Graph_Node* prev;
 
 private:
     unsigned int key;
+    int color;
     Linked_List<Graph_Edge_Struct> in;
     Linked_List<Graph_Edge_Struct> out;
 };
