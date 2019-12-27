@@ -9,6 +9,7 @@ struct Tree_Node {
     Tree_Node * parent;
     Tree_Node * left_child;
     Tree_Node * right_sibling;
+    int layer;
 };
 
 
@@ -19,8 +20,8 @@ public:
     ~Rooted_Tree();
     void Print_By_Layer(std::ostream& stream) const;
     void Preorder_Print(std::ostream& stream) const;
-    Tree_Node* Insert_Left_Child(Graph_Node* _node, Tree_Node* parent) const;
-    Tree_Node* Insert_Right_Sibling(Graph_Node* _node, Tree_Node* parent, Tree_Node* left_sibling) const;
+    static Tree_Node* Insert_Left_Child(Graph_Node* _node, Tree_Node* parent);
+    static Tree_Node* Insert_Right_Sibling(Graph_Node* _node, Tree_Node* parent, Tree_Node* left_sibling);
     Tree_Node* Get_Root();
 
 private:

@@ -20,6 +20,8 @@ public:
 
 private:
 
+    void DFS(Rooted_Tree* tree) const;
+    void setNodesColorToWhite() const;
     Linked_List<Graph_Node> nodes;
 };
 

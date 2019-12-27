@@ -38,7 +38,10 @@ void Dynamic_Graph::Delete_Edge(Graph_Edge* edge) {
 }
     
 Rooted_Tree* Dynamic_Graph::SCC() const {
-    Rooted_Tree * tree = new Rooted_Tree(0);
+    Graph_Node * empty_node = new Graph_Node();
+    empty_node->Set_Key(0);
+    Rooted_Tree * tree = new Rooted_Tree(empty_node);
+    DFS(tree);
     return tree;
 }
     
@@ -54,10 +57,10 @@ Rooted_Tree* Dynamic_Graph::BFS(Graph_Node* source) const {
             while(temp != NULL) {
                 if(temp->in_node->Get_Color() == 0) {
                     if(left_sibling == NULL) {
-                        left_sibling = tree->Insert_Left_Child(temp->in_node, current);
+                        left_sibling = Rooted_Tree::Insert_Left_Child(temp->in_node, current);
                     }
                     else {
-                        left_sibling = tree->Insert_Right_Sibling(temp->in_node, current, left_sibling);
+                        left_sibling = Rooted_Tree::Insert_Right_Sibling(temp->in_node, current, left_sibling);
                     }
                     queue.push(left_sibling);
                     temp->in_node->Set_Color(1);
@@ -68,10 +71,48 @@ Rooted_Tree* Dynamic_Graph::BFS(Graph_Node* source) const {
         }
     }
 
+    setNodesColorToWhite();
+    return tree;
+}
+
+Tree_Node* DFS_Util(Graph_Node* node, Tree_Node* parent, Tree_Node* left_sibling) {
+    node->Set_Color(1);
+    Tree_Node* starting_node = NULL;
+    if(left_sibling == NULL) {
+        starting_node = Rooted_Tree::Insert_Left_Child(node, parent);
+    }
+    else {
+        starting_node = Rooted_Tree::Insert_Right_Sibling(node, parent, left_sibling);
+    }
+
+    Graph_Edge_Struct* starting_edge = node->Get_Edges_Out().Get_Head();
+    Tree_Node* last_inserted_node = NULL;
+    while(starting_edge != NULL) {
+        if(starting_edge->in_node->Get_Color() == 0) {
+            last_inserted_node = DFS_Util(starting_edge->in_node, starting_node, last_inserted_node);
+        }
+        starting_edge = starting_edge->next;
+    }
+    node->Set_Color(2);
+    return starting_node;
+}
+
+void Dynamic_Graph::DFS(Rooted_Tree* tree) const {
+    Graph_Node* node = this->nodes.Get_Head();
+    Tree_Node* left_sibling = NULL;
+    while(node != NULL) {
+        if(node->Get_Color() == 0) {
+            left_sibling = DFS_Util(node, tree->Get_Root(), left_sibling);
+        }
+        node = node->next;
+    }
+    setNodesColorToWhite();
+}
+
+void Dynamic_Graph::setNodesColorToWhite() const{
     Graph_Node* temp = this->nodes.Get_Head();
     while(temp != NULL) {
         temp->Set_Color(0);
         temp = temp->next;
     }
-    return tree;
 }
