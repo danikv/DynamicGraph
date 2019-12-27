@@ -7,8 +7,14 @@ Queue::Queue()
 {
 }
 
-// A utility function to create 
-// a new linked list node. 
+Queue::~Queue() {
+    while(this->front != NULL) {
+        QNode* temp = this->front;
+        this->front = this->front->next;
+        delete temp;
+    }
+}
+
 QNode* Queue::newNode(void* node) const { 
     QNode* temp = new QNode(); 
     temp->key = node;
@@ -16,38 +22,25 @@ QNode* Queue::newNode(void* node) const {
     return temp; 
 }
 
-// The function to add a key k to q 
-void Queue::push(void* k) { 
-    // Create a new LL node 
+void Queue::push(void* k) {  
     QNode* temp = newNode(k); 
 
-    // If queue is empty, then 
-    // new node is front and rear both 
     if (this->rear == NULL) { 
         this->front = this->rear = temp; 
         return; 
     } 
 
-    // Add the new node at 
-    // the end of queue and change rear 
     this->rear->next = temp; 
     this->rear = temp; 
 } 
 
-// Function to remove 
-// a key from given queue q 
 void* Queue::pop() {
-    // If queue is empty, return NULL. 
     if (this->front == NULL)
         return NULL; 
 
-    // Store previous front and 
-    // move front one node ahead 
     QNode* temp = this->front; 
     this->front = this->front->next; 
 
-    // If front becomes NULL, then 
-    // change rear also as NULL 
     if (this->front == NULL) 
         this->rear = NULL; 
     return temp->key; 

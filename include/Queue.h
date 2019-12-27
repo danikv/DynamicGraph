@@ -7,13 +7,12 @@ struct QNode {
     QNode* next; 
 }; 
 
-// The queue, front stores the front node 
-// of LL and rear stores the last node of LL 
 class Queue {
 
 public:
 
     Queue();
+    ~Queue();
     void push(void* k);
     void* pop();
     bool empty() const;

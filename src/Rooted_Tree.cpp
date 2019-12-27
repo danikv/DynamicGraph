@@ -79,7 +79,6 @@ void Print_Recursive(std::ostream& stream, Tree_Node* root) {
     
 void Rooted_Tree::Preorder_Print(std::ostream& stream) const {
     Print_Recursive(stream, this->root);
-    stream << '\n';
 }
 
 Tree_Node* Rooted_Tree::Insert_Left_Child(Graph_Node* _node, Tree_Node* parent) {
