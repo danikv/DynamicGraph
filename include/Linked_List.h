@@ -13,14 +13,11 @@ public:
     }
 
     ~Linked_List() {
-        if(head == NULL)
-            return;
-        while(this->head->next != NULL) {
+        while(this->head != NULL) {
             Node* temp = this->head;
             this->head = this->head->next;
             delete temp;
         }
-        delete this->head;
     }
     
     Node* Get_Head() const {
@@ -49,6 +46,7 @@ public:
         if(node->next != NULL) {
             node->next->prev = node->prev;
         }
+        delete node;
     }
 
     unsigned int Size() const {

@@ -15,10 +15,10 @@ void deleteNode(Tree_Node* node) {
     if(node == NULL)
         return;
     if(node->left_child != NULL) {
-        if(node->right_sibling != NULL) {
-            deleteNode(node->right_sibling);
-        }
         deleteNode(node->left_child);
+    }
+    if(node->right_sibling != NULL) {
+        deleteNode(node->right_sibling);
     }
     if(node->node->Get_key() == 0)
         delete node->node;

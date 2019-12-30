@@ -3,17 +3,13 @@
 
 #include "Graph_Node.h"
 
-class Graph_Edge {
-
-public:
-    Graph_Edge(Graph_Edge_Struct* _in, Graph_Node* _node_in, Graph_Edge_Struct* _out, Graph_Node* _node_out);
-    ~Graph_Edge();
-
-private:
+struct Graph_Edge {    
     Graph_Edge_Struct* in;
     Graph_Node* node_in;
     Graph_Edge_Struct* out;
     Graph_Node* node_out;
+    Graph_Edge* next;
+    Graph_Edge* prev;
 };
 
 #endif

@@ -29,13 +29,18 @@ Graph_Edge* Dynamic_Graph::Insert_Edge(Graph_Node* from, Graph_Node* to) {
     Graph_Edge_Struct* edge_in = to->Get_Edges_In().Insert();
     edge_in->in_node = to;
     edge_in->out_node = from;
-    Graph_Edge* edge = new Graph_Edge(edge_in, to, edge_from, from);
+    Graph_Edge* edge = this->edges.Insert();
+    edge->in = edge_in;
+    edge->node_in = to;
+    edge->out = edge_from;
+    edge->node_out = from;
     return edge;
 }
     
 void Dynamic_Graph::Delete_Edge(Graph_Edge* edge) {
-    delete edge;
-    return;
+    edge->node_in->Get_Edges_In().Delete_Node(edge->in);
+    edge->node_out->Get_Edges_Out().Delete_Node(edge->out);
+    this->edges.Delete_Node(edge);
 }
 
 Tree_Node* Reverse_DFS_Util(Graph_Node* node, Tree_Node* parent, Tree_Node* left_sibling) {

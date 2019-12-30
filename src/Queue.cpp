@@ -39,11 +39,13 @@ void* Queue::pop() {
         return NULL; 
 
     QNode* temp = this->front; 
-    this->front = this->front->next; 
+    this->front = this->front->next;
 
     if (this->front == NULL) 
         this->rear = NULL; 
-    return temp->key; 
+    void* key = temp->key;
+    delete temp;
+    return key; 
 } 
 
 bool Queue::empty() const {
